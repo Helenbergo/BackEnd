@@ -1,0 +1,59 @@
+@model IEnumerable<_19_Atividade_CRUD.Models.Serie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Séries</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-dark">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sinopse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sinopse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.CategoriaNome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SerieId" class="btn btn-outline-secondary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SerieId" class="btn btn-outline-secondary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SerieId" class="btn btn-outline-secondary">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
